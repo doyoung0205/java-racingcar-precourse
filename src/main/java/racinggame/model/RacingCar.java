@@ -3,6 +3,9 @@ package racinggame.model;
 import racinggame.model.expcetion.InvalidRacingCarNameException;
 
 public class RacingCar {
+    private static final String CAR_NAME_EXCEEDED_MAXIMUM_LENGTH_ERROR_MESSAGE = "[ERROR] 경주할 자동차의 이름이 5자 초과하였습니다.";
+    private static final String CAR_NAME_IS_EMPTY_ERROR_MESSAGE = "[ERROR] 경주할 자동차의 이름을 입력해주세요.";
+
     private final String name;
     private final int forwardCount;
 
@@ -16,6 +19,14 @@ public class RacingCar {
         return new RacingCar(name);
     }
 
+    public int getForwardCount() {
+        return forwardCount;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
     private static void validate(final String name) {
         validateNameNotEmpty(name);
         validateNameLength(name);
@@ -23,13 +34,13 @@ public class RacingCar {
 
     private static void validateNameLength(final String name) {
         if (invalidLength(name)) {
-            throw new InvalidRacingCarNameException("[ERROR] 경주할 자동차의 이름이 5자 초과하였습니다.");
+            throw new InvalidRacingCarNameException(CAR_NAME_EXCEEDED_MAXIMUM_LENGTH_ERROR_MESSAGE);
         }
     }
 
     private static void validateNameNotEmpty(final String name) {
         if (isEmpty(name)) {
-            throw new InvalidRacingCarNameException("[ERROR] 경주할 자동차의 이름을 입력해주세요.");
+            throw new InvalidRacingCarNameException(CAR_NAME_IS_EMPTY_ERROR_MESSAGE);
         }
     }
 
@@ -39,13 +50,5 @@ public class RacingCar {
 
     private static boolean isEmpty(String name) {
         return name == null || name.equals("");
-    }
-
-    public int getForwardCount() {
-        return forwardCount;
-    }
-
-    public String getName() {
-        return this.name;
     }
 }

@@ -1,54 +1,40 @@
 package racinggame.model;
 
-import racinggame.model.expcetion.InvalidRacingCarNameException;
+import nextstep.utils.Randoms;
 
 public class RacingCar {
-    private static final String CAR_NAME_EXCEEDED_MAXIMUM_LENGTH_ERROR_MESSAGE = "[ERROR] 경주할 자동차의 이름이 5자 초과하였습니다.";
-    private static final String CAR_NAME_IS_EMPTY_ERROR_MESSAGE = "[ERROR] 경주할 자동차의 이름을 입력해주세요.";
+    private static final int RANDOM_MIN_NUMBER = 0;
+    private static final int RANDOM_MAX_NUMBER = 9;
 
-    private final String name;
-    private final int forwardCount;
+    private final Name name;
+    private final Lap lap;
 
     private RacingCar(final String name) {
-        this.name = name;
-        this.forwardCount = 0;
+        this.name = Name.valueOf(name);
+        this.lap = Lap.init();
     }
 
     public static RacingCar getInstanceByName(final String name) {
-        validate(name);
         return new RacingCar(name);
     }
 
-    public int getForwardCount() {
-        return forwardCount;
+    public Lap race() {
+        final int pickNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
+        if (pickNumber > 4) {
+            lap.plus();
+        }
+        return this.lap;
+    }
+
+    public boolean isStartLine() {
+        return lap.isStartLine();
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
 
-    private static void validate(final String name) {
-        validateNameNotEmpty(name);
-        validateNameLength(name);
-    }
-
-    private static void validateNameLength(final String name) {
-        if (invalidLength(name)) {
-            throw new InvalidRacingCarNameException(CAR_NAME_EXCEEDED_MAXIMUM_LENGTH_ERROR_MESSAGE);
-        }
-    }
-
-    private static void validateNameNotEmpty(final String name) {
-        if (isEmpty(name)) {
-            throw new InvalidRacingCarNameException(CAR_NAME_IS_EMPTY_ERROR_MESSAGE);
-        }
-    }
-
-    private static boolean invalidLength(String name) {
-        return name.length() > 5;
-    }
-
-    private static boolean isEmpty(String name) {
-        return name == null || name.equals("");
+    public int getLap() {
+        return lap.getLap();
     }
 }

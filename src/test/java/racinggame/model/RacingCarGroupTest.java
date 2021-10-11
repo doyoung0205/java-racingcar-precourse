@@ -13,15 +13,15 @@ public class RacingCarGroupTest {
     void 레이싱카그룹은_쉼표를_기준으로_레이싱카를_생성할_수_있다() {
         String names = "포르쉐,마세라티,람보르기니";
         final List<RacingCar> racingCarList = Arrays.asList(RacingCar.getInstanceByName("포르쉐"), RacingCar.getInstanceByName("마세라티"), RacingCar.getInstanceByName("람보르기니"));
-        RacingCarGroup racingCarGroup = new RacingCarGroup(names);
-        assertNotNull(racingCarGroup);
-        assertEquals(racingCarGroup.size(), 3);
-        assertRacingCarNameMatch(racingCarGroup, racingCarList);
+        RacingCarGroups racingCarGroups = RacingCarGroups.getInstanceByNames(names);
+        assertNotNull(racingCarGroups);
+        assertEquals(racingCarGroups.size(), 3);
+        assertRacingCarNameMatch(racingCarGroups, racingCarList);
     }
 
-    private void assertRacingCarNameMatch(RacingCarGroup racingCarGroup, List<RacingCar> racingCarList) {
-        final List<RacingCar> racingCars = racingCarGroup.getRacingCars();
-        for (int i = 0; i < racingCars.size(); i++) {
+    private void assertRacingCarNameMatch(RacingCarGroups racingCarGroups, List<RacingCar> racingCarList) {
+        final List<RacingCar> racingCars = racingCarGroups.getRacingCars();
+        for (int i = 0; i < racingCarGroups.size(); i++) {
             final RacingCar racingCar = racingCars.get(i);
             assertEquals(racingCar.getName(), racingCarList.get(i).getName());
         }

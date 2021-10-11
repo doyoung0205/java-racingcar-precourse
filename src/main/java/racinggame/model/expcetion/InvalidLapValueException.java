@@ -1,14 +1,8 @@
 package racinggame.model.expcetion;
 
-public class InvalidLapValueException extends RuntimeException {
-    private final String message;
+public class InvalidLapValueException extends RacingCarGameException {
 
     public InvalidLapValueException(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(message);
     }
 }

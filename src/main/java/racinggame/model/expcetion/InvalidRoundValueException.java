@@ -1,14 +1,8 @@
 package racinggame.model.expcetion;
 
-public class InvalidRoundValueException extends RuntimeException {
-    private final String message;
+public class InvalidRoundValueException extends RacingCarGameException {
 
     public InvalidRoundValueException(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(message);
     }
 }

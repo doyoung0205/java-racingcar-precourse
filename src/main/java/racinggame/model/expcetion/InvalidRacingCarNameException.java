@@ -1,14 +1,8 @@
 package racinggame.model.expcetion;
 
-public class InvalidRacingCarNameException extends RuntimeException {
-    private final String message;
+public class InvalidRacingCarNameException extends RacingCarGameException {
 
     public InvalidRacingCarNameException(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(message);
     }
 }

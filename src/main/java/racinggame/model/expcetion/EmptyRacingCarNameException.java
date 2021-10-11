@@ -1,14 +1,8 @@
 package racinggame.model.expcetion;
 
-public class EmptyRacingCarNameException extends RuntimeException {
-    private final String message;
+public class EmptyRacingCarNameException extends RacingCarGameException {
 
     public EmptyRacingCarNameException(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(message);
     }
 }

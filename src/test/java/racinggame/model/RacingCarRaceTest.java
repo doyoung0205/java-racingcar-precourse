@@ -24,10 +24,10 @@ public class RacingCarRaceTest extends NSTest {
     void 레이스시_랜덤값이_5이상_일_경우_랩이_1추가_된다(int randomValue) {
         final int beforeLap = racingCar.getLap();
         assertRandomTest(() -> {
-            Lap afterLap = racingCar.race();
+            assertTrue(racingCar.race());
+            final int afterLap = racingCar.getLap();
             assertAll(() -> {
-                assertFalse(afterLap.isStartLine());
-                assertEquals(afterLap.getLap(), beforeLap + 1);
+                assertEquals(afterLap, beforeLap + 1);
             });
         }, randomValue, 1, 9);
     }
@@ -37,10 +37,10 @@ public class RacingCarRaceTest extends NSTest {
     void 레이스시_랜덤값이_4이하_일_경우_랩이_추가되지_않는다(int randomValue) {
         final int beforeLap = racingCar.getLap();
         assertRandomTest(() -> {
-            Lap afterLap = racingCar.race();
+            assertFalse(racingCar.race());
+            final int afterLap = racingCar.getLap();
             assertAll(() -> {
-                assertTrue(afterLap.isStartLine());
-                assertEquals(afterLap.getLap(), beforeLap);
+                assertEquals(afterLap, beforeLap);
             });
         }, randomValue, 1, 9);
     }

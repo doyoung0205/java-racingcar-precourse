@@ -18,12 +18,13 @@ public class RacingCar {
         return new RacingCar(name);
     }
 
-    public Lap race() {
+    public boolean race() {
         final int pickNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
         if (pickNumber > 4) {
             lap.plus();
+            return true;
         }
-        return this.lap;
+        return false;
     }
 
     public boolean isStartLine() {
@@ -38,4 +39,15 @@ public class RacingCar {
         return lap.getLap();
     }
 
+    @Override
+    public String toString() {
+        return "RacingCar{" +
+                "name=" + name +
+                ", lap=" + lap +
+                '}';
+    }
+
+    public RacingCarCapture toCapture() {
+        return RacingCarCapture.valueOf(this);
+    }
 }

@@ -1,16 +1,24 @@
 package racinggame.model;
 
+import racinggame.model.expcetion.InvalidLapValueException;
+
 public class Lap {
     private static final int ZERO = 0;
+    private static final String ROUNDS_MIN_VALUE_ERROR_MESSAGE = "[ERROR] 랩의 최소 크기는 0 보다 크거나 같습니다.";
 
     private int lap;
 
     private Lap(int lap) {
+        validateMinValue(lap);
         this.lap = lap;
     }
 
     public static Lap init() {
         return new Lap(ZERO);
+    }
+
+    public static Lap valueOf(int lap) {
+        return new Lap(lap);
     }
 
     public boolean isStartLine() {
@@ -23,6 +31,12 @@ public class Lap {
 
     public int getLap() {
         return lap;
+    }
+
+    private static void validateMinValue(int rounds) {
+        if (rounds < 0) {
+            throw new InvalidLapValueException(ROUNDS_MIN_VALUE_ERROR_MESSAGE);
+        }
     }
 
     @Override
@@ -38,5 +52,10 @@ public class Lap {
     @Override
     public int hashCode() {
         return lap;
+    }
+
+    @Override
+    public String toString() {
+        return "" + lap;
     }
 }

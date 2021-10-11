@@ -1,12 +1,9 @@
 package racinggame.model;
 
-import racinggame.model.expcetion.ParticipatedGroupNotEmptyException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
-    private static final String PARTICIPATED_GROUP_NOT_EMPTY_ERROR_MESSAGE = "[ERROR] 게임에 참여하는 게이싱카그룹이 비어있습니다.";
     private final RacingCarGroups participatedGroups;
     private final Rounds rounds;
 
@@ -15,15 +12,8 @@ public class RacingCarGame {
         this.rounds = rounds;
     }
 
-    public static RacingCarGame getInstanceByParticipatedGroupAndRounds(RacingCarGroups participatedGroups, int rounds) {
-        validateNotNull(participatedGroups);
-        return new RacingCarGame(participatedGroups, Rounds.valueOf(rounds));
-    }
-
-    private static void validateNotNull(RacingCarGroups participatedGroups) throws ParticipatedGroupNotEmptyException {
-        if (participatedGroups == null) {
-            throw new ParticipatedGroupNotEmptyException(PARTICIPATED_GROUP_NOT_EMPTY_ERROR_MESSAGE);
-        }
+    public static RacingCarGame getInstanceByParticipatedNamesAndRounds(String names, int rounds) {
+        return new RacingCarGame(RacingCarGroups.getInstanceByNames(names), Rounds.valueOf(rounds));
     }
 
     public RacingCarGameResult start() {

@@ -1,7 +1,26 @@
 package racinggame;
 
+import racinggame.controller.RacingCarGameController;
+import racinggame.controller.RacingCarGameRequestDto;
+import racinggame.model.RacingCarGameResult;
+import racinggame.view.RacingCarGameForm;
+import racinggame.view.RacingCarGameView;
+
 public class Application {
-    public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+    private static final RacingCarGameController controller;
+    private static final RacingCarGameForm form;
+    private static final RacingCarGameView view;
+
+    static {
+        controller = new RacingCarGameController();
+        form = new RacingCarGameForm();
+        view = new RacingCarGameView();
     }
+
+    public static void main(String[] args) {
+        final RacingCarGameRequestDto requestDto = form.submit();
+        final RacingCarGameResult gameResult = controller.start(requestDto);
+        view.resolve(gameResult);
+    }
+
 }

@@ -22,13 +22,13 @@ public class RacingCarGroups {
     }
 
     public static RacingCarGroups getInstanceByNames(String names) {
-        validateEmptyName(names);
+        validateEmptyNames(names);
         final List<RacingCar> racingCars = getRacingCarsByNames(names);
-        validateDuplicatedName(racingCars);
+        validateDuplicatedNames(racingCars);
         return new RacingCarGroups(racingCars);
     }
 
-    private static void validateEmptyName(String names) {
+    private static void validateEmptyNames(String names) {
         if (names == null || names.equals("")) {
             throw new EmptyRacingCarNameException(RACING_CAR_NAME_NOT_EMPTY_ERROR_MESSAGE);
         }
@@ -44,7 +44,7 @@ public class RacingCarGroups {
         return racingCars;
     }
 
-    private static void validateDuplicatedName(List<RacingCar> racingCarCaptures) {
+    private static void validateDuplicatedNames(List<RacingCar> racingCarCaptures) {
         final Set<RacingCar> racingCarSet = new HashSet<>(racingCarCaptures);
         if (racingCarSet.size() != racingCarCaptures.size()) {
             throw new DuplicatedRacingCarNameException(DUPLICATED_RACING_CAR_NAME_ERROR_MESSAGE);

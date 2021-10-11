@@ -40,6 +40,24 @@ public class RacingCar {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RacingCar racingCar = (RacingCar) o;
+
+        if (!name.equals(racingCar.name)) return false;
+        return lap.equals(racingCar.lap);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + lap.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "RacingCar{" +
                 "name=" + name +

@@ -7,17 +7,17 @@ public class Rounds {
     private final int rounds;
     private int current;
 
-    public Rounds(int rounds) {
+    public Rounds(final int rounds) {
         validateMinValue(rounds);
         this.rounds = rounds;
         this.current = 0;
     }
 
-    public static Rounds valueOf(int rounds) {
+    public static Rounds valueOf(final int rounds) {
         return new Rounds(rounds);
     }
 
-    public static Rounds valueOf(String roundsStr) {
+    public static Rounds valueOf(final String roundsStr) {
         try {
             final int rounds = Integer.parseInt(roundsStr);
             return new Rounds(rounds);
@@ -26,8 +26,8 @@ public class Rounds {
         }
     }
 
-    private static void validateMinValue(int rounds) {
-        if (rounds <= 0) {
+    private static void validateMinValue(final int rounds) {
+        if (rounds < 0) {
             throw new InvalidRoundsValueException(INVALID_RACING_ROUNDS_INPUT_ERROR_MESSAGE);
         }
     }
@@ -39,5 +39,13 @@ public class Rounds {
     public int nextRound() {
         this.current += 1;
         return this.current;
+    }
+
+    public int getRounds() {
+        return rounds;
+    }
+
+    public int getCurrent() {
+        return current;
     }
 }

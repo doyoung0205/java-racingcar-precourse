@@ -36,6 +36,13 @@ public class RacingCarGameForm {
         return submit();
     }
 
+    private int getInputRounds() {
+        System.out.println(RACING_ROUNDS_INPUT_GUIDE_MESSAGE);
+        final String boundsStr = Console.readLine();
+        validateInputRounds(boundsStr);
+        return Integer.parseInt(boundsStr);
+    }
+
     private String getInputParticipatedNames() {
         System.out.println(RACING_CAR_NAMES_INPUT_GUIDE_MESSAGE);
         final String names = Console.readLine();
@@ -43,15 +50,15 @@ public class RacingCarGameForm {
         return names;
     }
 
-    private void validateInputNames(String names) {
+    private void validateInputNames(final String names) {
         validateEmptyNames(names);
         validateDuplicatedNames(names);
         validateLengthNames(names);
     }
 
-    private void validateLengthNames(String names) {
+    private void validateLengthNames(final String names) {
         final String[] nameList = names.split(CAR_NAME_DELIM);
-        for (String name : nameList) {
+        for (final String name : nameList) {
             checkLengthName(name);
         }
     }
@@ -62,7 +69,7 @@ public class RacingCarGameForm {
         }
     }
 
-    private void validateDuplicatedNames(String names) {
+    private void validateDuplicatedNames(final String names) {
         final List<String> nameList = Arrays.asList(names.split(CAR_NAME_DELIM));
         final Set<String> namesSet = new HashSet<>(nameList);
         if (nameList.size() != namesSet.size()) {
@@ -70,17 +77,10 @@ public class RacingCarGameForm {
         }
     }
 
-    private void validateEmptyNames(String names) {
+    private void validateEmptyNames(final String names) {
         if (names == null || names.equals("")) {
             throw new InvalidRacingCarGameFormException(RACING_CAR_NAME_EMPTY_ERROR_MESSAGE);
         }
-    }
-
-    private int getInputRounds() {
-        System.out.println(RACING_ROUNDS_INPUT_GUIDE_MESSAGE);
-        final String boundsStr = Console.readLine();
-        validateInputRounds(boundsStr);
-        return Integer.parseInt(boundsStr);
     }
 
     private void validateInputRounds(final String boundsStr) {
@@ -90,19 +90,19 @@ public class RacingCarGameForm {
         validateMinValueInputRounds(boundsStr);
     }
 
-    private void validateMinValueInputRounds(String boundsStr) {
+    private void validateMinValueInputRounds(final String boundsStr) {
         if (boundsStr == null || boundsStr.equals("")) {
             throw new InvalidRacingCarGameFormException(RACING_ROUNDS_EMPTY_ERROR_MESSAGE);
         }
     }
 
-    private void validateParseIntInputRounds(String boundsStr) {
+    private void validateParseIntInputRounds(final String boundsStr) {
         if (!boundsStr.matches(ONLY_NUMBER_REGEX)) {
             throw new InvalidRacingCarGameFormException(RACING_ROUNDS_NOT_NUMBER_ERROR_MESSAGE);
         }
     }
 
-    private void validateOnlyNumberInputRounds(String boundsStr) {
+    private void validateOnlyNumberInputRounds(final String boundsStr) {
         try {
             Integer.parseInt(boundsStr);
         } catch (NumberFormatException exception) {
@@ -110,7 +110,7 @@ public class RacingCarGameForm {
         }
     }
 
-    private void validateEmptyInputRounds(String boundsStr) {
+    private void validateEmptyInputRounds(final String boundsStr) {
         if (Integer.parseInt(boundsStr) <= 0) {
             throw new InvalidRacingCarGameFormException(RACING_ROUNDS_MIN_VALUE_ERROR_MESSAGE);
         }

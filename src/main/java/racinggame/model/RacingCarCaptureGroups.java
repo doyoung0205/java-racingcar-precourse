@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class RacingCarCaptureGroups {
-    private static final String DELIMITER = ",";
     private final List<RacingCarCapture> racingCarCaptures = new ArrayList<>();
 
     private RacingCarCaptureGroups(List<RacingCarCapture> racingCarCaptures) {
@@ -17,35 +16,10 @@ public class RacingCarCaptureGroups {
         return new RacingCarCaptureGroups(racingCars);
     }
 
-    public RacingCarCaptureGroups getMaxLapRacingCarGroups() {
-        final int maxLap = getMaxLap();
-        final List<RacingCarCapture> raceResultList = getRacingCarListByMaxLap(maxLap);
+    public RacingCarCaptureGroups getMaxDistanceRacingCarGroups() {
+        final int maxDistance = getMaxDistance();
+        final List<RacingCarCapture> raceResultList = getRacingCarListByMaxDistance(maxDistance);
         return RacingCarCaptureGroups.valueOf(raceResultList);
-    }
-
-    private int getMaxLap() {
-        List<RacingCarCapture> raceResults = new ArrayList<>(this.racingCarCaptures);
-        raceResultsSortOrderByLapDesc(raceResults);
-        final RacingCarCapture topRacingCar = raceResults.get(0);
-        return topRacingCar.getLap();
-    }
-
-    private List<RacingCarCapture> getRacingCarListByMaxLap(int maxLap) {
-        List<RacingCarCapture> raceResultList = new ArrayList<>();
-        for (RacingCarCapture racingCarCapture : racingCarCaptures) {
-            addIfLapEquals(maxLap, raceResultList, racingCarCapture);
-        }
-        return raceResultList;
-    }
-
-    private void addIfLapEquals(int maxLap, List<RacingCarCapture> raceResultList, RacingCarCapture racingCar) {
-        if (racingCar.getLap() == maxLap) {
-            raceResultList.add(racingCar);
-        }
-    }
-
-    private void raceResultsSortOrderByLapDesc(List<RacingCarCapture> raceResults) {
-        raceResults.sort(Comparator.comparing(RacingCarCapture::getLap).reversed());
     }
 
     public List<String> getNames() {
@@ -58,5 +32,30 @@ public class RacingCarCaptureGroups {
 
     public List<RacingCarCapture> getRacingCarCaptures() {
         return Collections.unmodifiableList(racingCarCaptures);
+    }
+
+    private int getMaxDistance() {
+        List<RacingCarCapture> raceResults = new ArrayList<>(this.racingCarCaptures);
+        raceResultsSortOrderByDistanceDesc(raceResults);
+        final RacingCarCapture topRacingCar = raceResults.get(0);
+        return topRacingCar.getDistance();
+    }
+
+    private List<RacingCarCapture> getRacingCarListByMaxDistance(final int maxDistance) {
+        List<RacingCarCapture> raceResultList = new ArrayList<>();
+        for (RacingCarCapture racingCarCapture : racingCarCaptures) {
+            addIfDistanceEquals(maxDistance, raceResultList, racingCarCapture);
+        }
+        return raceResultList;
+    }
+
+    private void addIfDistanceEquals(int maxDistance, List<RacingCarCapture> raceResultList, RacingCarCapture racingCar) {
+        if (racingCar.getDistance() == maxDistance) {
+            raceResultList.add(racingCar);
+        }
+    }
+
+    private void raceResultsSortOrderByDistanceDesc(List<RacingCarCapture> raceResults) {
+        raceResults.sort(Comparator.comparing(RacingCarCapture::getDistance).reversed());
     }
 }

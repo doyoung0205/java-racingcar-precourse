@@ -20,7 +20,7 @@ public class RoundScoreGroups {
      */
     protected RacingCarCaptureGroups getVictoryGroups() {
         final RoundScore roundScore = roundScores.get(roundScores.size() - 1);
-        return roundScore.getMaxLapRacingCarGroups();
+        return roundScore.getMaxDistanceRacingCarGroups();
     }
 
     public List<RoundScore> getRoundScores() {

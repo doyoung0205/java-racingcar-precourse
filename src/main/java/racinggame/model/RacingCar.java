@@ -7,11 +7,11 @@ public class RacingCar {
     private static final int RANDOM_MAX_NUMBER = 9;
 
     private final Name name;
-    private final Lap lap;
+    private final Distance distance;
 
     private RacingCar(final String name) {
         this.name = Name.valueOf(name);
-        this.lap = Lap.init();
+        this.distance = Distance.init();
     }
 
     public static RacingCar getInstanceByName(final String name) {
@@ -21,22 +21,22 @@ public class RacingCar {
     public boolean race() {
         final int pickNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
         if (pickNumber > 4) {
-            lap.plus();
+            distance.plus();
             return true;
         }
         return false;
     }
 
     public boolean isStartLine() {
-        return lap.isStartLine();
+        return distance.isStartLine();
     }
 
     public String getName() {
         return this.name.getName();
     }
 
-    public int getLap() {
-        return lap.getLap();
+    public int getDistance() {
+        return distance.getDistance();
     }
 
     @Override
@@ -47,13 +47,13 @@ public class RacingCar {
         RacingCar racingCar = (RacingCar) o;
 
         if (!name.equals(racingCar.name)) return false;
-        return lap.equals(racingCar.lap);
+        return distance.equals(racingCar.distance);
     }
 
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + lap.hashCode();
+        result = 31 * result + distance.hashCode();
         return result;
     }
 
@@ -61,7 +61,7 @@ public class RacingCar {
     public String toString() {
         return "RacingCar{" +
                 "name=" + name +
-                ", lap=" + lap +
+                ", distance=" + distance +
                 '}';
     }
 

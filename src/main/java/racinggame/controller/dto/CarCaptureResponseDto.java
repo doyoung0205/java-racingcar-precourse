@@ -4,24 +4,24 @@ import racinggame.model.RacingCarCapture;
 
 public class CarCaptureResponseDto {
     private final String name;
-    private final int lap;
+    private final int distance;
 
-    private CarCaptureResponseDto(String name, int lap) {
+    private CarCaptureResponseDto(String name, int distance) {
         this.name = name;
-        this.lap = lap;
+        this.distance = distance;
     }
 
     public static CarCaptureResponseDto toDto(RacingCarCapture racingCarCapture) {
         final String name = racingCarCapture.getName();
-        final int lap = racingCarCapture.getLap();
-        return new CarCaptureResponseDto(name, lap);
+        final int distance = racingCarCapture.getDistance();
+        return new CarCaptureResponseDto(name, distance);
     }
 
     public String getName() {
         return name;
     }
 
-    public int getLap() {
-        return lap;
+    public int getDistance() {
+        return distance;
     }
 }

@@ -13,8 +13,8 @@ public class RoundScore {
         return new RoundScore(racingCars);
     }
 
-    public RacingCarCaptureGroups getMaxLapRacingCarGroups() {
-        return racingCarCaptureGroups.getMaxLapRacingCarGroups();
+    public RacingCarCaptureGroups getMaxDistanceRacingCarGroups() {
+        return racingCarCaptureGroups.getMaxDistanceRacingCarGroups();
     }
 
     public List<RacingCarCapture> getRacingCarCaptureGroups() {

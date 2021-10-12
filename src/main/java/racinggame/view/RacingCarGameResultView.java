@@ -32,14 +32,14 @@ public class RacingCarGameResultView {
 
     private void printRacingCarCaptureGroups(final List<CarCaptureResponseDto> carCaptures) {
         for (CarCaptureResponseDto carCapture : carCaptures) {
-            System.out.printf(RACING_CAR_CAPTURE_GROUPS_MESSAGE_TEMPLATE, carCapture.getName(), getDistance(carCapture.getLap()));
+            System.out.printf(RACING_CAR_CAPTURE_GROUPS_MESSAGE_TEMPLATE, carCapture.getName(), getDistancePrintMessage(carCapture.getDistance()));
         }
         System.out.println();
     }
 
-    private String getDistance(final int lap) {
+    private String getDistancePrintMessage(final int distance) {
         final StringBuilder distanceBuilder = new StringBuilder();
-        for (int i = 0; i < lap; i++) {
+        for (int i = 0; i < distance; i++) {
             distanceBuilder.append("-");
         }
         return distanceBuilder.toString();

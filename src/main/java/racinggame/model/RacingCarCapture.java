@@ -2,22 +2,22 @@ package racinggame.model;
 
 public class RacingCarCapture {
     private final Name name;
-    private final Lap lap;
+    private final Distance distance;
 
     public static RacingCarCapture valueOf(final RacingCar racingCar) {
-        return new RacingCarCapture(racingCar.getName(), racingCar.getLap());
+        return new RacingCarCapture(racingCar.getName(), racingCar.getDistance());
     }
 
-    private RacingCarCapture(final String name, final int lap) {
+    private RacingCarCapture(final String name, final int distance) {
         this.name = Name.valueOf(name);
-        this.lap = Lap.valueOf(lap);
+        this.distance = Distance.valueOf(distance);
     }
 
     public String getName() {
         return name.getName();
     }
 
-    public int getLap() {
-        return lap.getLap();
+    public int getDistance() {
+        return distance.getDistance();
     }
 }

@@ -25,7 +25,7 @@ public class Distance {
         return this.distance == ZERO;
     }
 
-    public void plus() {
+    public void moveForward() {
         this.distance++;
     }
 

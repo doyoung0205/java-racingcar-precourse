@@ -21,7 +21,7 @@ public class RacingCar {
     public boolean race() {
         final int pickNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
         if (pickNumber > 4) {
-            distance.plus();
+            distance.moveForward();
             return true;
         }
         return false;

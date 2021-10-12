@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import racinggame.controller.RacingCarGameRequestDto;
+import racinggame.controller.dto.RacingCarGameRequestDto;
 import racinggame.view.exception.InvalidRacingCarGameFormException;
 
 import java.util.Arrays;
@@ -97,7 +97,7 @@ public class RacingCarGameForm {
     }
 
     private void validateParseIntInputRounds(String boundsStr) {
-        if (boundsStr.matches(ONLY_NUMBER_REGEX)) {
+        if (!boundsStr.matches(ONLY_NUMBER_REGEX)) {
             throw new InvalidRacingCarGameFormException(RACING_ROUNDS_NOT_NUMBER_ERROR_MESSAGE);
         }
     }

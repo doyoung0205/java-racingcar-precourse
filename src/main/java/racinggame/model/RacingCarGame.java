@@ -24,9 +24,9 @@ public class RacingCarGame {
     private List<RoundScore> raceUntilNoNextRound() {
         final List<RoundScore> roundScoreList = new ArrayList<>();
         while (rounds.hasNextRound()) {
-            final int round = rounds.nextRound();
-            final RoundScore roundScore = participatedGroups.race(round);
+            final RoundScore roundScore = participatedGroups.race();
             roundScoreList.add(roundScore);
+            rounds.nextRound();
         }
         return roundScoreList;
     }

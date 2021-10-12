@@ -1,6 +1,7 @@
 package racinggame.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RoundScoreGroups {
@@ -17,8 +18,12 @@ public class RoundScoreGroups {
     /**
      * 가장 마지막 라운드의 결과를 바탕으로 우승 그룹을 결정
      */
-    public RacingCarCaptureGroups getVictoryGroups() {
+    protected RacingCarCaptureGroups getVictoryGroups() {
         final RoundScore roundScore = roundScores.get(roundScores.size() - 1);
         return roundScore.getMaxLapRacingCarGroups();
+    }
+
+    public List<RoundScore> getRoundScores() {
+        return Collections.unmodifiableList(roundScores);
     }
 }

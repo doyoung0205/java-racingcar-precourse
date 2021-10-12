@@ -1,11 +1,18 @@
 package racinggame.controller;
 
-import racinggame.model.RacingCarGame;
-import racinggame.model.RacingCarGameResult;
+import racinggame.controller.dto.RacingCarGameRequestDto;
+import racinggame.controller.dto.RacingCarGameResponseDto;
+import racinggame.service.RacingCarGameService;
 
 public class RacingCarGameController {
-    public RacingCarGameResult start(final RacingCarGameRequestDto requestDto) {
-        final RacingCarGame racingCarGame = requestDto.toEntity();
-        return racingCarGame.start();
+
+    private final RacingCarGameService racingCarGameService;
+
+    public RacingCarGameController() {
+        this.racingCarGameService = new RacingCarGameService();
+    }
+
+    public RacingCarGameResponseDto start(final RacingCarGameRequestDto requestDto) {
+        return racingCarGameService.start(requestDto);
     }
 }

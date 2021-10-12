@@ -63,13 +63,13 @@ public class RacingCarGroups {
         return Collections.unmodifiableList(racingCars);
     }
 
-    public RoundScore race(final int round) {
+    public RoundScore race() {
         final List<RacingCarCapture> racingCarCaptures = new ArrayList<>();
         for (final RacingCar racingCar : racingCars) {
             racingCar.race();
             racingCarCaptures.add(racingCar.toCapture());
         }
-        return RoundScore.valueOf(racingCarCaptures, round);
+        return RoundScore.valueOf(racingCarCaptures);
     }
 
     @Override

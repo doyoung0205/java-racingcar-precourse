@@ -13,11 +13,16 @@ public class RacingCarGameResult {
         return new RacingCarGameResult(roundScores);
     }
 
-    public RacingCarCaptureGroups getVictoryGroups() {
+    private RacingCarCaptureGroups getVictoryGroups() {
         return roundScoreGroups.getVictoryGroups();
     }
 
-    public RoundScoreGroups getRoundScoreGroups() {
-        return roundScoreGroups;
+    public List<String> getVictoryGroupsNames() {
+        final RacingCarCaptureGroups victoryGroups = getVictoryGroups();
+        return victoryGroups.getNames();
+    }
+
+    public List<RoundScore> getRoundScoreGroups() {
+        return roundScoreGroups.getRoundScores();
     }
 }

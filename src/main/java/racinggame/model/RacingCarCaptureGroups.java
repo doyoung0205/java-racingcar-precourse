@@ -1,10 +1,12 @@
 package racinggame.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class RacingCarCaptureGroups {
+    private static final String DELIMITER = ",";
     private final List<RacingCarCapture> racingCarCaptures = new ArrayList<>();
 
     private RacingCarCaptureGroups(List<RacingCarCapture> racingCarCaptures) {
@@ -44,5 +46,17 @@ public class RacingCarCaptureGroups {
 
     private void raceResultsSortOrderByLapDesc(List<RacingCarCapture> raceResults) {
         raceResults.sort(Comparator.comparing(RacingCarCapture::getLap).reversed());
+    }
+
+    public List<String> getNames() {
+        final List<String> names = new ArrayList<>();
+        for (RacingCarCapture carCapture : racingCarCaptures) {
+            names.add(carCapture.getName());
+        }
+        return names;
+    }
+
+    public List<RacingCarCapture> getRacingCarCaptures() {
+        return Collections.unmodifiableList(racingCarCaptures);
     }
 }

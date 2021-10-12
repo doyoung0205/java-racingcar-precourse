@@ -1,26 +1,25 @@
 package racinggame;
 
 import racinggame.controller.RacingCarGameController;
-import racinggame.controller.RacingCarGameRequestDto;
-import racinggame.model.RacingCarGameResult;
+import racinggame.controller.dto.RacingCarGameRequestDto;
+import racinggame.controller.dto.RacingCarGameResponseDto;
 import racinggame.view.RacingCarGameForm;
-import racinggame.view.RacingCarGameView;
+import racinggame.view.RacingCarGameResultView;
 
 public class Application {
     private static final RacingCarGameController controller;
     private static final RacingCarGameForm form;
-    private static final RacingCarGameView view;
+    private static final RacingCarGameResultView view;
 
     static {
         controller = new RacingCarGameController();
         form = new RacingCarGameForm();
-        view = new RacingCarGameView();
+        view = new RacingCarGameResultView();
     }
 
     public static void main(String[] args) {
         final RacingCarGameRequestDto requestDto = form.submit();
-        final RacingCarGameResult gameResult = controller.start(requestDto);
-        view.resolve(gameResult);
+        final RacingCarGameResponseDto gameResultResponseDto = controller.start(requestDto);
+        view.resolve(gameResultResponseDto);
     }
-
 }

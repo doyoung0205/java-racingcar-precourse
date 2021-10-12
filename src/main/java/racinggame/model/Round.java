@@ -21,4 +21,7 @@ public class Round {
         }
     }
 
+    public int getRound() {
+        return round;
+    }
 }

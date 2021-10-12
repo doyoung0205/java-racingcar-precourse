@@ -13,7 +13,7 @@ public class Distance {
         this.distance = distance;
     }
 
-    public static Distance init() {
+    public static Distance getInstance() {
         return new Distance(ZERO);
     }
 

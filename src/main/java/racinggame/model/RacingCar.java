@@ -11,7 +11,7 @@ public class RacingCar {
 
     private RacingCar(final String name) {
         this.name = Name.valueOf(name);
-        this.distance = Distance.init();
+        this.distance = Distance.getInstance();
     }
 
     public static RacingCar getInstanceByName(final String name) {

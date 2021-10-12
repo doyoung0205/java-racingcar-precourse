@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class RacingCarGameForm {
+    private static final int NAME_MIN_LENGTH = 5;
     // 안내 메시지
     private static final String RACING_CAR_NAMES_INPUT_GUIDE_MESSAGE = "경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로구분)";
     private static final String RACING_ROUNDS_INPUT_GUIDE_MESSAGE = "시도할 횟수는 몇 회인가요?";
@@ -64,7 +65,7 @@ public class RacingCarGameForm {
     }
 
     private void checkLengthName(final String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_MIN_LENGTH) {
             throw new InvalidRacingCarGameFormException(RACING_CAR_NAME_EXCEEDED_MAXIMUM_LENGTH_ERROR_MESSAGE);
         }
     }

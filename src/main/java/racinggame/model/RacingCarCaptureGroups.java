@@ -16,6 +16,10 @@ public class RacingCarCaptureGroups {
         return new RacingCarCaptureGroups(racingCars);
     }
 
+    public static RacingCarCaptureGroups empty() {
+        return new RacingCarCaptureGroups(new ArrayList<>());
+    }
+
     public RacingCarCaptureGroups getMaxDistanceRacingCarGroups() {
         final int maxDistance = getMaxDistance();
         final List<RacingCarCapture> raceResultList = getRacingCarListByMaxDistance(maxDistance);

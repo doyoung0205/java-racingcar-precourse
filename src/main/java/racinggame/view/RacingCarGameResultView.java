@@ -15,7 +15,7 @@ public class RacingCarGameResultView {
 
     public void resolve(final RacingCarGameResponseDto gameResponseDto) {
         printTitle();
-        printRoundScoreGroups(gameResponseDto.getRoundScores());
+        printRoundScores(gameResponseDto.getRoundScores());
         printVictoryGroupsNames(gameResponseDto.getVictoryCarNames());
     }
 
@@ -23,7 +23,7 @@ public class RacingCarGameResultView {
         System.out.println(TITLE);
     }
 
-    private void printRoundScoreGroups(final List<RoundScoreResponseDto> roundScores) {
+    private void printRoundScores(final List<RoundScoreResponseDto> roundScores) {
         for (RoundScoreResponseDto roundScore : roundScores) {
             final List<CarCaptureResponseDto> carCaptures = roundScore.getCarCaptures();
             printRacingCarCaptureGroups(carCaptures);

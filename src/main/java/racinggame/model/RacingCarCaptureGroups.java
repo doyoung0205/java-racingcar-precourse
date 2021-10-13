@@ -62,4 +62,11 @@ public class RacingCarCaptureGroups {
     private void raceResultsSortOrderByDistanceDesc(List<RacingCarCapture> raceResults) {
         raceResults.sort(Comparator.comparing(RacingCarCapture::getDistance).reversed());
     }
+
+    @Override
+    public String toString() {
+        return "RacingCarCaptureGroups{" +
+                "racingCarCaptures=" + racingCarCaptures +
+                '}';
+    }
 }

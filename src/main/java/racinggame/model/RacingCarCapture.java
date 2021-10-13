@@ -20,4 +20,12 @@ public class RacingCarCapture {
     public int getDistance() {
         return distance.getDistance();
     }
+
+    @Override
+    public String toString() {
+        return "RacingCarCapture{" +
+                "name=" + name +
+                ", distance=" + distance +
+                '}';
+    }
 }

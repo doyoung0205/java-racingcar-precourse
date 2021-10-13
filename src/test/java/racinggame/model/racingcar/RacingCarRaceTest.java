@@ -34,7 +34,7 @@ public class RacingCarRaceTest extends NSTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 4})
+    @ValueSource(ints = {0, 1, 2, 3})
     void 레이스시_랜덤값이_3이하_일_경우_랩이_추가되지_않는다(int randomValue) {
         final int beforeDistance = racingCar.getDistance();
         assertRandomTest(() -> {

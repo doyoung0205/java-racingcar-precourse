@@ -21,4 +21,8 @@ public class RoundScore {
         return racingCarCaptureGroups.getRacingCarCaptures();
     }
 
+    @Override
+    public String toString() {
+        return racingCarCaptureGroups.toString();
+    }
 }

@@ -30,7 +30,7 @@ public class RacingCarRaceTest extends NSTest {
             assertAll(() -> {
                 assertEquals(afterDistance, beforeDistance + 1);
             });
-        }, randomValue, 1, 9);
+        }, randomValue);
     }
 
     @ParameterizedTest
@@ -43,7 +43,7 @@ public class RacingCarRaceTest extends NSTest {
             assertAll(() -> {
                 assertEquals(afterDistance, beforeDistance);
             });
-        }, randomValue, 1, 9);
+        }, randomValue);
     }
 
 

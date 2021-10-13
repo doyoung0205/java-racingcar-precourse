@@ -3,6 +3,7 @@ package racinggame.model;
 import nextstep.utils.Randoms;
 
 public class RacingCar {
+    private static final int MOVE_FORWARD_THRESHOLD = 4;
     private static final int RANDOM_MIN_NUMBER = 0;
     private static final int RANDOM_MAX_NUMBER = 9;
 
@@ -19,12 +20,16 @@ public class RacingCar {
     }
 
     public boolean race() {
-        final int pickNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
-        if (pickNumber > 4) {
+        if (isMoveAble()) {
             distance.moveForward();
             return true;
         }
         return false;
+    }
+
+    private boolean isMoveAble() {
+        final int pickNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
+        return pickNumber > MOVE_FORWARD_THRESHOLD;
     }
 
     public boolean isStartLine() {

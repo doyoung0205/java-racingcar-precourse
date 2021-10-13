@@ -6,13 +6,13 @@ import racinggame.service.RacingCarGameService;
 
 public class RacingCarGameController {
 
-    private final RacingCarGameService racingCarGameService;
+	private final RacingCarGameService racingCarGameService;
 
-    public RacingCarGameController() {
-        this.racingCarGameService = new RacingCarGameService();
-    }
+	public RacingCarGameController() {
+		this.racingCarGameService = new RacingCarGameService();
+	}
 
-    public RacingCarGameResponseDto start(final RacingCarGameRequestDto requestDto) {
-        return racingCarGameService.start(requestDto);
-    }
+	public RacingCarGameResponseDto start(final RacingCarGameRequestDto requestDto) {
+		return racingCarGameService.start(requestDto);
+	}
 }

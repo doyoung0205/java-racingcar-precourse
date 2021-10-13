@@ -6,9 +6,9 @@ import racinggame.model.RacingCarGame;
 import racinggame.model.RacingCarGameResult;
 
 public class RacingCarGameService {
-    public RacingCarGameResponseDto start(RacingCarGameRequestDto requestDto) {
-        final RacingCarGame racingCarGame = requestDto.toEntity();
-        final RacingCarGameResult carGameResult = racingCarGame.start();
-        return RacingCarGameResponseDto.toDto(carGameResult);
-    }
+	public RacingCarGameResponseDto start(RacingCarGameRequestDto requestDto) {
+		final RacingCarGame racingCarGame = requestDto.toEntity();
+		final RacingCarGameResult carGameResult = racingCarGame.start();
+		return RacingCarGameResponseDto.toDto(carGameResult);
+	}
 }

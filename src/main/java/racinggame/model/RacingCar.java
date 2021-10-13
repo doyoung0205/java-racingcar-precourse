@@ -29,7 +29,7 @@ public class RacingCar {
 
     private boolean isMoveAble() {
         final int pickNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
-        return pickNumber > MOVE_FORWARD_THRESHOLD;
+        return pickNumber >= MOVE_FORWARD_THRESHOLD;
     }
 
     public boolean isStartLine() {
